@@ -40,8 +40,18 @@ jobs:
           echo ""
           
           ssh -i ~/.ssh/ec2_key ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
-            # Make script executable if not already
-            chmod +x /home/ubuntu/metadata.sh
+            # Check if file is executable
+            if [ ! -x /home/ubuntu/metadata.sh ]; then
+              echo "File is not executable. Making it executable..."
+              chmod +x /home/ubuntu/metadata.sh
+              echo "Permissions updated successfully"
+            else
+              echo "File is already executable"
+            fi
+            
+            echo ""
+            echo "Executing script..."
+            echo ""
             
             # Execute the script
             /home/ubuntu/metadata.sh
