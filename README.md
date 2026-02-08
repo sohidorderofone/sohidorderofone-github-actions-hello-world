@@ -115,6 +115,25 @@ This is the most important step! Your workflow needs three secrets to connect to
   ```bash
   # On Windows (PowerShell)
   Get-Content "path\to\your\key.pem"
+
+  ### Crate SSH Key
+  ssh-keygen -t ed25519 -f github-actions-ec2 -C "github-actions"
+
+This creates two files 
+  1. github-actions-ec2
+  2. github-actions-ec2.pub
+
+  ### Trust established on EC2
+
+  cat github-actions-ec2.pub >> ~/.ssh/authorized_keys
+  chmod 600 ~/.ssh/authorized_keys
+
+  ### Store private key in GitHub (ONE-TIME)
+  cat github-actions-ec2
+
+  public key is being stored in machine and private key is being stored by requestor or consumer machine. 
+  
+
   
   # Copy the entire output including:
   # -----BEGIN RSA PRIVATE KEY-----
