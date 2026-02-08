@@ -1,4 +1,4 @@
-# GitHub Actions - EC2 Management Workflows
+# GitHub Actions - EC2 Management Workflows0--
 This repository demonstrates how to use GitHub Actions to manage and monitor AWS EC2 instances with three automated workflows.
 
 ## 🎯 What This Does
